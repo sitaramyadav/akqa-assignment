@@ -1,11 +1,12 @@
-import React from 'react'
+import React from "react";
 
+import { MainHeader } from "../components/common/Header";
 const App = () => {
   return (
     <div data-testid="app">
-      <h1>React, webpack, webpack dev middileware, babel, eslint setup </h1>
+      <MainHeader />
     </div>
-  )
-}
+  );
+};
 
-export default App
+export default App;
