@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<App /> Snapshot testing 1`] = `
+<div
+  data-testid="app"
+>
+  <h1>
+    React, webpack, webpack dev middileware, babel, eslint setup 
+  </h1>
+</div>
+`;
