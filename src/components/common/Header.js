@@ -2,11 +2,12 @@ import React, { Component } from "react";
 import styled from "styled-components";
 
 import akqaLog from "../../../images/akqa-logo.jpg";
-import cartLogo from "../../../images/basket.png";
+import cartLogo from "../../../images/cart-icon.svg";
 
 const Header = styled.header`
-  width: 200px;
-  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  background-color: #f8f4f4;
 `;
 
 export const MainHeader = () => {
