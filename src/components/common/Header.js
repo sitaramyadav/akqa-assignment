@@ -15,6 +15,7 @@ const HeaderContainer = styled.header`
 const CardIcon = styled.picture`
   position: relative;
   top: 20px;
+  cursor: pointer;
 `;
 
 const IconCartButton = styled.img`
