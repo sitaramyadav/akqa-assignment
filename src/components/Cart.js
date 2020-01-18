@@ -18,6 +18,7 @@ const ButtonAddToCart = styled.button`
   color: white;
   padding: 0px 05px;
   justify-content: space-between;
+  cursor: pointer;
 `;
 
 const IconAddToCart = styled.img`

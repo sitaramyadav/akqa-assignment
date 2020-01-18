@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 const FooterContainer = styled.footer`
   border-top: 1px solid black;
-  margin: 10px 50px;
+  margin: 50px;
   text-align: right;
   position: relative;
   bottom: 10px;
