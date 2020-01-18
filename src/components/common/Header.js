@@ -41,7 +41,8 @@ const Counter = styled.p`
   color: white;
 `;
 
-export const Header = ({ noOfProductsInCart }) => {
+export const Header = props => {
+  console.log("header props", props);
   return (
     <HeaderContainer>
       <picture>
@@ -50,7 +51,7 @@ export const Header = ({ noOfProductsInCart }) => {
       <CardIcon>
         <img src={cartLogo} alt={"cart logo"} />
         <CountItermInTheCart>
-          <Counter>{noOfProductsInCart}</Counter>
+          <Counter>{}</Counter>
         </CountItermInTheCart>
       </CardIcon>
     </HeaderContainer>

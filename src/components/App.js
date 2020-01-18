@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import { Main } from "./Main";
 import { Footer } from "./common/Footer";
+import { MainContainer } from "./MainContainer";
 
 const Container = styled.div`
   margin: 0;
@@ -12,7 +12,7 @@ const Container = styled.div`
 const App = () => {
   return (
     <Container data-testid="app">
-      <Main />
+      <MainContainer />
       <Footer />
     </Container>
   );
