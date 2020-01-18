@@ -35,7 +35,7 @@ const ProductTitle = styled.h3`
   margin-bottom: 0;
 `;
 
-export const Cart = ({ title, image, price, shortDescription }) => {
+export const Product = ({ title, image, price, shortDescription }) => {
   return (
     <CardContainer>
       <ProductTitle>{title}</ProductTitle>
@@ -45,7 +45,7 @@ export const Cart = ({ title, image, price, shortDescription }) => {
         </CartThumb>
         <figcaption>{shortDescription}</figcaption>
         <CartFooter>
-          <p>Price: ${price}</p>
+          <p>Price: {price}</p>
           <ButtonAddToCart>
             <IconAddToCart src={IconButtonCart} alt={"Card btn"} />
             <p>ADD TO CART</p>
