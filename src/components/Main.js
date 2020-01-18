@@ -1,25 +1,41 @@
 import React from "react";
 import styled from "styled-components";
-import ProductUrl from "../../images/cart-thumb.jpg";
+import { Cart } from "./Cart";
+import { products, prodcuts } from "./products";
 
 const MainContainer = styled.main``;
 
-const Product = styled.ul``;
+const ProductList = styled.ul`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+`;
+
+const ProdctListCatalogTitle = styled.h2`
+  margin-left: 60px;
+`;
 
 export const Main = () => {
-  const products = ["one ", "2", "3", "j4", "h5", "6", "j7", "8o", "9"];
+  const products = new Array(6).fill(prodcuts);
   return (
     <MainContainer>
-      {products.map((product, index) => {
-        return (
-          <Product key={index * Math.random()}>
-            <picture>
-              <img src={ProductUrl} />
-              <figcaption>{product}</figcaption>
-            </picture>
-          </Product>
-        );
-      })}
+      <ProdctListCatalogTitle>
+        Lorem ipsum dolor sit amet
+      </ProdctListCatalogTitle>
+      <ProductList>
+        {products.map((product, index) => {
+          return (
+            <Cart
+              key={index}
+              title={product.title}
+              image={product.ProductCardImg}
+              price={product.price}
+              shortDescription={product.shortDescription}
+            />
+          );
+        })}
+      </ProductList>
+      {/* })} */}
     </MainContainer>
   );
 };

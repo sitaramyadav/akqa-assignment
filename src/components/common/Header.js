@@ -9,7 +9,7 @@ const Header = styled.header`
   justify-content: space-between;
   // background-color: #f8f4f4;
   border-bottom: 1px solid black;
-  margin: 10px 20px;
+  margin: 10px 50px;
 `;
 
 const CardIcon = styled.picture`
