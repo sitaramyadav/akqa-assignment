@@ -24,11 +24,12 @@ export const MainContainer = () => {
   };
 
   function reducer(state, action) {
+    // console.log("state =>", state, "action", action, "reducer mai hai ey");
     console.log("reducer", state, action);
     console.log(state, "state", action, "action");
     switch (action.type) {
       case ADD_TO_CART:
-        return { ...state, quantity: cart.quantity + 1 };
+        return { ...state, quantity: action.payload.quantity };
       default:
         throw new Error();
     }

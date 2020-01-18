@@ -14,7 +14,7 @@ const ProdctListCatalogTitle = styled.h2`
   margin-left: 95px;
 `;
 
-export const ProductCatalogue = ({ products }) => {
+export const ProductCatalogue = ({ products, cart, onClickHandler }) => {
   return (
     <MainContainer>
       <ProdctListCatalogTitle>
@@ -29,6 +29,8 @@ export const ProductCatalogue = ({ products }) => {
               productImage={product.productCardImg}
               price={product.price}
               shortDescription={product.shortDescription}
+              cart={cart}
+              onClickHandler={onClickHandler}
             />
           );
         })}

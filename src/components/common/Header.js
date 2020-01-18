@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 import akqaLog from "../../../images/akqa-logo.jpg";
 import cartLogo from "../../../images/cart-icon.svg";
+import { ADD_TO_CART } from "../../Constants";
 
 const HeaderContainer = styled.header`
   display: flex;
@@ -41,17 +42,23 @@ const Counter = styled.p`
   color: white;
 `;
 
-export const Header = props => {
-  console.log("header props", props);
+export const Header = ({ cart, onClickHandler }) => {
   return (
     <HeaderContainer>
       <picture>
         <IconCartButton src={akqaLog} alt={"akqa logo"} />
       </picture>
-      <CardIcon>
+      <CardIcon
+        onClick={() =>
+          onClickHandler({
+            type: ADD_TO_CART,
+            payload: cart.quantity + 1
+          })
+        }
+      >
         <img src={cartLogo} alt={"cart logo"} />
         <CountItermInTheCart>
-          <Counter>{}</Counter>
+          <Counter>{cart.quantity}</Counter>
         </CountItermInTheCart>
       </CardIcon>
     </HeaderContainer>

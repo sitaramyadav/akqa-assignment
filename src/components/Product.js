@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import IconButtonCart from "../../images/cart-btn.svg";
 import ProductCardImg from "../../images/cart-thumb.jpg";
+import { ADD_TO_CART } from "../Constants";
 
 const CardContainer = styled.li`
   list-style-type: none;
@@ -36,7 +37,14 @@ const ProductTitle = styled.h3`
   margin: 40px 0 0 0;
 `;
 
-export const Product = ({ title, productImage, price, shortDescription }) => {
+export const Product = ({
+  title,
+  productImage,
+  price,
+  shortDescription,
+  cart,
+  onClickHandler
+}) => {
   return (
     <CardContainer>
       <ProductTitle>{title}</ProductTitle>
@@ -45,7 +53,14 @@ export const Product = ({ title, productImage, price, shortDescription }) => {
           <img src={productImage} alt={"Card Image"} />
         </CartThumb>
         <figcaption>{shortDescription}</figcaption>
-        <CartFooter>
+        <CartFooter
+          onClick={() =>
+            onClickHandler({
+              type: ADD_TO_CART,
+              payload: { ...cart, quantity: cart.quantity + 1, price: price }
+            })
+          }
+        >
           <p>Price: {price}</p>
           <ButtonAddToCart>
             <IconAddToCart src={IconButtonCart} alt={"Card btn"} />
