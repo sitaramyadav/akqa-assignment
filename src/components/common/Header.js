@@ -40,7 +40,7 @@ const Counter = styled.p`
   color: white;
 `;
 
-export const Header = () => {
+export const Header = ({ noOfProductsInCart }) => {
   return (
     <HeaderContainer>
       <picture>
@@ -49,7 +49,7 @@ export const Header = () => {
       <CardIcon>
         <img src={cartLogo} alt={"cart logo"} />
         <CountItermInTheCart>
-          <Counter>4</Counter>
+          <Counter>{noOfProductsInCart}</Counter>
         </CountItermInTheCart>
       </CardIcon>
     </HeaderContainer>

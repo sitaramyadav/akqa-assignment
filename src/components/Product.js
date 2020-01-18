@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import IconButtonCart from "../../images/cart-btn.svg";
+import ProductCardImg from "../../images/cart-thumb.jpg";
 
 const CardContainer = styled.li`
   list-style-type: none;
@@ -32,16 +33,16 @@ const CartThumb = styled.div`
 `;
 
 const ProductTitle = styled.h3`
-  margin-bottom: 0;
+  margin: 40px 0 0 0;
 `;
 
-export const Product = ({ title, image, price, shortDescription }) => {
+export const Product = ({ title, productImage, price, shortDescription }) => {
   return (
     <CardContainer>
       <ProductTitle>{title}</ProductTitle>
       <picture>
         <CartThumb>
-          <img src={image} alt={"Card Image"} />
+          <img src={productImage} alt={"Card Image"} />
         </CartThumb>
         <figcaption>{shortDescription}</figcaption>
         <CartFooter>

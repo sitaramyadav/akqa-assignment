@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import { Product } from "./Product";
-import { prodcuts } from "./products";
 
 const MainContainer = styled.main``;
 
@@ -15,8 +14,7 @@ const ProdctListCatalogTitle = styled.h2`
   margin-left: 95px;
 `;
 
-export const ProductCatalogue = () => {
-  const products = new Array(6).fill(prodcuts);
+export const ProductCatalogue = ({ products }) => {
   return (
     <MainContainer>
       <ProdctListCatalogTitle>
@@ -28,7 +26,7 @@ export const ProductCatalogue = () => {
             <Product
               key={index}
               title={product.title}
-              image={product.ProductCardImg}
+              productImage={product.productCardImg}
               price={product.price}
               shortDescription={product.shortDescription}
             />
