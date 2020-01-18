@@ -4,7 +4,7 @@ import styled from "styled-components";
 import akqaLog from "../../../images/akqa-logo.jpg";
 import cartLogo from "../../../images/cart-icon.svg";
 
-const Header = styled.header`
+const HeaderContainer = styled.header`
   display: flex;
   justify-content: space-between;
   // background-color: #f8f4f4;
@@ -40,9 +40,9 @@ const Counter = styled.p`
   color: white;
 `;
 
-export const MainHeader = () => {
+export const Header = () => {
   return (
-    <Header>
+    <HeaderContainer>
       <picture>
         <IconCartButton src={akqaLog} alt={"akqa logo"} />
       </picture>
@@ -52,6 +52,6 @@ export const MainHeader = () => {
           <Counter>4</Counter>
         </CountItermInTheCart>
       </CardIcon>
-    </Header>
+    </HeaderContainer>
   );
 };

@@ -1,7 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import { MainHeader } from "../components/common/Header";
+import { Header } from "../components/common/Header";
 import { Main } from "./Main";
+import { Footer } from "./common/Footer";
 
 const Container = styled.div`
   margin: 0;
@@ -12,8 +13,9 @@ const Container = styled.div`
 const App = () => {
   return (
     <Container data-testid="app">
-      <MainHeader />
+      <Header />
       <Main />
+      <Footer />
     </Container>
   );
 };

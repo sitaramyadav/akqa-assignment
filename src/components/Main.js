@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Cart } from "./Cart";
-import { products, prodcuts } from "./products";
+import { prodcuts } from "./products";
 
 const MainContainer = styled.main``;
 
@@ -12,7 +12,7 @@ const ProductList = styled.ul`
 `;
 
 const ProdctListCatalogTitle = styled.h2`
-  margin-left: 60px;
+  margin-left: 95px;
 `;
 
 export const Main = () => {
@@ -35,7 +35,6 @@ export const Main = () => {
           );
         })}
       </ProductList>
-      {/* })} */}
     </MainContainer>
   );
 };

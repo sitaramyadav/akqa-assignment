@@ -30,10 +30,14 @@ const CartThumb = styled.div`
   align-items: center;
 `;
 
+const ProductTitle = styled.h3`
+  margin-bottom: 0;
+`;
+
 export const Cart = ({ title, image, price, shortDescription }) => {
   return (
     <CardContainer>
-      <h3>{title}</h3>
+      <ProductTitle>{title}</ProductTitle>
       <picture>
         <CartThumb>
           <img src={image} alt={"Card Image"} />
