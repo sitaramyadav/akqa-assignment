@@ -18,13 +18,14 @@ const ButtonAddToCart = styled.button`
   background-color: red;
   display: flex;
   color: white;
-  padding: 0px 05px;
+  padding: 0px 10px 0 10px;
   justify-content: space-between;
   cursor: pointer;
+  font-size: 16px;
 `;
 
 const IconAddToCart = styled.img`
-  margin: 10px;
+  margin: 17px 10px 0 0;
 `;
 
 const CartThumb = styled.img`
@@ -38,6 +39,9 @@ const ProductTitle = styled.h3`
   margin: 20px 0 2px 0px;
 `;
 
+const Price = styled.p`
+  font-weight: bold;
+`;
 export const Product = ({
   title,
   productImage,
@@ -52,7 +56,7 @@ export const Product = ({
         <CartThumb src={productImage} alt={"Card Image"} />
         <figcaption>{shortDescription}</figcaption>
         <CartFooter>
-          <p>Price: {price}</p>
+          <Price>Price: ${price}</Price>
           <ButtonAddToCart
             onClick={() =>
               onClickHandler({
