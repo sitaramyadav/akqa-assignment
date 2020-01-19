@@ -15,6 +15,7 @@ const ProdctListCatalogTitle = styled.h2`
 `;
 
 export const ProductCatalogue = ({ store, onClickHandler }) => {
+  // adding into card can be dispatch from here
   return (
     <MainContainer>
       <ProdctListCatalogTitle>
@@ -29,7 +30,6 @@ export const ProductCatalogue = ({ store, onClickHandler }) => {
               productImage={product.productCardImg}
               price={product.price}
               shortDescription={product.shortDescription}
-              cart={store.cart}
               onClickHandler={onClickHandler}
             />
           );

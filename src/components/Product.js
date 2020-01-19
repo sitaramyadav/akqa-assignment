@@ -42,7 +42,6 @@ export const Product = ({
   productImage,
   price,
   shortDescription,
-  cart,
   onClickHandler
 }) => {
   return (
@@ -53,22 +52,20 @@ export const Product = ({
           <img src={productImage} alt={"Card Image"} />
         </CartThumb>
         <figcaption>{shortDescription}</figcaption>
-        <CartFooter
-          onClick={() =>
-            onClickHandler({
-              type: ADD_TO_CART,
-              payload: {
-                ...cart,
-                quantity: cart.quantity + 1,
-                price: price,
-                img: productImage,
-                productTitle: title
-              }
-            })
-          }
-        >
+        <CartFooter>
           <p>Price: {price}</p>
-          <ButtonAddToCart>
+          <ButtonAddToCart
+            onClick={() =>
+              onClickHandler({
+                type: ADD_TO_CART,
+                payload: {
+                  price: price,
+                  img: productImage,
+                  productTitle: title
+                }
+              })
+            }
+          >
             <IconAddToCart src={IconButtonCart} alt={"Card btn"} />
             <p>ADD TO CART</p>
           </ButtonAddToCart>

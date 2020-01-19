@@ -7,11 +7,10 @@ import { CartModel } from "./CartModel";
 export const MainContainer = () => {
   const [store, dispatch] = useReducer(reducer, initialState);
   const [showModel, setshowModel] = useState(false);
-  console.log(store.cart, "inthe main container");
   return (
     <>
       <Header
-        quantity={store.cart.quantity}
+        quantity={store.cart.length}
         onClickHandler={setshowModel}
         showModel={showModel}
       />

@@ -1,4 +1,4 @@
-import ProductCardImg from "../../images/cart-thumb.jpg";
+import ProductCardImg from "../../images/tile-card.jpg";
 
 export const productInfo = {
   title: "Lorem ipsum dolor sit amet, consectetur adipiscing.",
