@@ -27,14 +27,15 @@ const IconAddToCart = styled.img`
   margin: 10px;
 `;
 
-const CartThumb = styled.div`
+const CartThumb = styled.img`
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%;
 `;
 
 const ProductTitle = styled.h3`
-  margin: 40px 0 0 0;
+  margin: 20px 0 2px 0px;
 `;
 
 export const Product = ({
@@ -48,9 +49,7 @@ export const Product = ({
     <CardContainer>
       <ProductTitle>{title}</ProductTitle>
       <picture>
-        <CartThumb>
-          <img src={productImage} alt={"Card Image"} />
-        </CartThumb>
+        <CartThumb src={productImage} alt={"Card Image"} />
         <figcaption>{shortDescription}</figcaption>
         <CartFooter>
           <p>Price: {price}</p>

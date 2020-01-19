@@ -11,7 +11,7 @@ const ProductList = styled.ul`
 `;
 
 const ProdctListCatalogTitle = styled.h2`
-  margin-left: 95px;
+  margin: 0 0 0 94px;
 `;
 
 export const ProductCatalogue = ({ store, onClickHandler }) => {
