@@ -14,14 +14,14 @@ const ProdctListCatalogTitle = styled.h2`
   margin-left: 95px;
 `;
 
-export const ProductCatalogue = ({ products, cart, onClickHandler }) => {
+export const ProductCatalogue = ({ store, onClickHandler }) => {
   return (
     <MainContainer>
       <ProdctListCatalogTitle>
         Lorem ipsum dolor sit amet
       </ProdctListCatalogTitle>
       <ProductList>
-        {products.map((product, index) => {
+        {store.products.map((product, index) => {
           return (
             <Product
               key={index}
@@ -29,7 +29,7 @@ export const ProductCatalogue = ({ products, cart, onClickHandler }) => {
               productImage={product.productCardImg}
               price={product.price}
               shortDescription={product.shortDescription}
-              cart={cart}
+              cart={store.cart}
               onClickHandler={onClickHandler}
             />
           );

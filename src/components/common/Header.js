@@ -42,23 +42,16 @@ const Counter = styled.p`
   color: white;
 `;
 
-export const Header = ({ cart, onClickHandler }) => {
+export const Header = ({ quantity, onClickHandler, showModel }) => {
   return (
     <HeaderContainer>
       <picture>
         <IconCartButton src={akqaLog} alt={"akqa logo"} />
       </picture>
-      <CardIcon
-        onClick={() =>
-          onClickHandler({
-            type: ADD_TO_CART,
-            payload: cart.quantity + 1
-          })
-        }
-      >
+      <CardIcon onClick={() => onClickHandler(!showModel)}>
         <img src={cartLogo} alt={"cart logo"} />
         <CountItermInTheCart>
-          <Counter>{cart.quantity}</Counter>
+          <Counter>{quantity}</Counter>
         </CountItermInTheCart>
       </CardIcon>
     </HeaderContainer>

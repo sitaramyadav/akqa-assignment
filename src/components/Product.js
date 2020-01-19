@@ -57,7 +57,13 @@ export const Product = ({
           onClick={() =>
             onClickHandler({
               type: ADD_TO_CART,
-              payload: { ...cart, quantity: cart.quantity + 1, price: price }
+              payload: {
+                ...cart,
+                quantity: cart.quantity + 1,
+                price: price,
+                img: productImage,
+                productTitle: title
+              }
             })
           }
         >
