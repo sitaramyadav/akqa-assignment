@@ -2,7 +2,7 @@ import React, { useReducer, useState } from "react";
 import { Header } from "./common/Header";
 import { ProductCatalogue } from "./ProductCatalogue";
 import { initialState, reducer } from "./CartReducer";
-import { CartModel } from "./CartModel";
+import { CartModal } from "./CartModal";
 
 export const MainContainer = () => {
   const [store, dispatch] = useReducer(reducer, initialState);
@@ -14,8 +14,12 @@ export const MainContainer = () => {
         onClickHandler={setshowModel}
         showModel={showModel}
       />
-      <ProductCatalogue store={store} onClickHandler={dispatch} />
-      {showModel && <CartModel cart={store.cart} />}
+      <ProductCatalogue
+        store={store}
+        onClickHandler={dispatch}
+        showModel={showModel}
+      />
+      {showModel && <CartModal cart={store.cart} />}
     </>
   );
 };

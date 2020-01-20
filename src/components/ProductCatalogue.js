@@ -14,10 +14,10 @@ const ProdctListCatalogTitle = styled.h2`
   margin: 0 0 0 94px;
 `;
 
-export const ProductCatalogue = ({ store, onClickHandler }) => {
+export const ProductCatalogue = ({ store, onClickHandler, showModel }) => {
   // adding into card can be dispatch from here
   return (
-    <MainContainer>
+    <MainContainer showModel={showModel}>
       <ProdctListCatalogTitle>
         Lorem ipsum dolor sit amet
       </ProdctListCatalogTitle>
