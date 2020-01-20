@@ -35,6 +35,18 @@ const TableData = styled.td`
   text-align: left;
 `;
 
+const SubTotal = styled(TableData)`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+`;
+
+const Total = styled(SubTotal)`
+  display: flex;
+  flex-direction: flex-end;
+  justify-content: flex-end;
+`;
+
 const CartTitle = styled.h3`
   position: absolute;
 `;
@@ -90,6 +102,15 @@ export const CartModal = ({ cart }) => {
                   </tr>
                 );
               })}
+              <tr>
+                <SubTotal>
+                  <p>Subtotal</p>
+                  <p>Vat @ 20%</p>
+                </SubTotal>
+              </tr>
+              <tr>
+                <Total>Total Cost $</Total>
+              </tr>
             </tbody>
           </TableStyling>
         </CartItems>
