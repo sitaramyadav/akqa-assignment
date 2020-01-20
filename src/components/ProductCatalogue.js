@@ -2,7 +2,9 @@ import React from "react";
 import styled from "styled-components";
 import { Product } from "./Product";
 
-const MainContainer = styled.main``;
+const MainContainer = styled.main`
+  opacity: ${props => (props.showModel ? ".5" : "1")};
+`;
 
 const ProductList = styled.ul`
   display: flex;

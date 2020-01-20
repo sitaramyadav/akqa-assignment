@@ -33,6 +33,7 @@ const CountItermInTheCart = styled.figcaption`
   background: red;
   border-radius: 50px 50px;
   padding: 10px 10px 10px 10px;
+  background-color: red;
 `;
 
 const Counter = styled.p`
@@ -48,8 +49,12 @@ export const Header = ({ quantity, onClickHandler, showModel }) => {
       <picture>
         <IconCartButton src={akqaLog} alt={"akqa logo"} />
       </picture>
-      <CardIcon onClick={() => onClickHandler(!showModel)}>
-        <img src={cartLogo} alt={"cart logo"} />
+      <CardIcon>
+        <img
+          onClick={() => onClickHandler(!showModel)}
+          src={cartLogo}
+          alt={"cart logo"}
+        />
         <CountItermInTheCart>
           <Counter>{quantity}</Counter>
         </CountItermInTheCart>

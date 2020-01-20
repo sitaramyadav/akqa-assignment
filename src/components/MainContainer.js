@@ -7,6 +7,7 @@ import { CartModal } from "./CartModal";
 export const MainContainer = () => {
   const [store, dispatch] = useReducer(reducer, initialState);
   const [showModel, setshowModel] = useState(false);
+  console.log(showModel, "from main container");
   return (
     <>
       <Header
