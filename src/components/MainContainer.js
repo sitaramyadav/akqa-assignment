@@ -3,6 +3,7 @@ import { Header } from "./common/Header";
 import { ProductCatalogue } from "./ProductCatalogue";
 import { initialState, reducer } from "./CartReducer";
 import { CartModal } from "./CartModal";
+import { COMPUTE_CART_TOTAL } from "../Constants";
 
 export const MainContainer = () => {
   const [store, dispatch] = useReducer(reducer, initialState);
@@ -20,7 +21,7 @@ export const MainContainer = () => {
         onClickHandler={dispatch}
         showModel={showModel}
       />
-      {showModel && <CartModal cart={store.cart} />}
+      {showModel && <CartModal cart={store.cart} setshowModel={setshowModel} />}
     </>
   );
 };

@@ -1,5 +1,10 @@
 import { productInfo } from "./products";
-import { ADD_TO_CART, GET_PRODUCT_INFO, GET_CART_QUANTITY } from "../Constants";
+import {
+  ADD_TO_CART,
+  GET_PRODUCT_INFO,
+  GET_CART_QUANTITY,
+  COMPUTE_CART_TOTAL
+} from "../Constants";
 
 const initialCart = [
   {

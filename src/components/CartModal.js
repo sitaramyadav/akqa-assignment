@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import CartThumImageUrl from "../../images/cart-thumb.jpg";
 const CartModelContainer = styled.article`
@@ -35,16 +35,22 @@ const TableData = styled.td`
   text-align: left;
 `;
 
-const SubTotal = styled(TableData)`
+const SubTotal = styled.td`
   display: flex;
   flex-direction: column;
   align-items: flex-end;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  border-collapse: collapse;
 `;
 
-const Total = styled(SubTotal)`
+const Total = styled.td`
   display: flex;
   flex-direction: flex-end;
   justify-content: flex-end;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  border-collapse: collapse;
 `;
 
 const CartTitle = styled.h3`
@@ -69,12 +75,33 @@ const ButtonBuyNow = styled.button`
   padding: 5px 10px 05px 10px;
 `;
 
-export const CartModal = ({ cart }) => {
-  console.log("cartModal, ", cart);
+const CloseModal = styled.button`
+  background: white;
+  height: 50px;
+  width: 50px;
+  font-size: 24px;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  top: 20px;
+  right: 0;
+`;
+
+export const CartModal = ({ cart, setshowModel }) => {
+  // const [subTotal, setSubTotal] = useState(0);
+  // const [total, setTotal] = useState(0);
+  const subTotal = cart.reduce(function(accumulator, currentValue) {
+    return Number(accumulator) + Number(currentValue.price);
+  }, 0);
+
+  const subTotalIncludingVat = subTotal * (20 / 100);
+  const total = subTotalIncludingVat + subTotal;
+
   return (
     <>
       <CartModelContainer>
         <CartTitle>Your cart Items</CartTitle>
+        <CloseModal onClick={() => setshowModel(false)}>X</CloseModal>
 
         <CartItems>
           <TableStyling>
@@ -104,17 +131,25 @@ export const CartModal = ({ cart }) => {
               })}
               <tr>
                 <SubTotal>
-                  <p>Subtotal</p>
-                  <p>Vat @ 20%</p>
+                  <p>Subtotal {subTotal}</p>
+                  <p>Vat @ 20% {subTotalIncludingVat}</p>
                 </SubTotal>
               </tr>
               <tr>
-                <Total>Total Cost $</Total>
+                <Total>Total Cost $ {total}</Total>
               </tr>
             </tbody>
           </TableStyling>
         </CartItems>
-        <ButtonBuyNow>Buy Now >></ButtonBuyNow>
+        <ButtonBuyNow
+          onClick={() =>
+            alert(
+              `{ Subtotal: ${subTotal}, Vat: ${subTotalIncludingVat}, total: ${total}}`
+            )
+          }
+        >
+          Buy Now >>
+        </ButtonBuyNow>
       </CartModelContainer>
     </>
   );
