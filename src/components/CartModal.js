@@ -97,6 +97,13 @@ export const CartModal = ({ cart, setshowModel }) => {
   const subTotalIncludingVat = subTotal * (20 / 100);
   const total = subTotalIncludingVat + subTotal;
 
+  const handleBuyNow = () => {
+    setshowModel(false);
+    alert(
+      `{ Subtotal: ${subTotal}, Vat: ${subTotalIncludingVat}, total: ${total}}`
+    );
+  };
+
   return (
     <>
       <CartModelContainer>
@@ -141,15 +148,7 @@ export const CartModal = ({ cart, setshowModel }) => {
             </tbody>
           </TableStyling>
         </CartItems>
-        <ButtonBuyNow
-          onClick={() =>
-            alert(
-              `{ Subtotal: ${subTotal}, Vat: ${subTotalIncludingVat}, total: ${total}}`
-            )
-          }
-        >
-          Buy Now >>
-        </ButtonBuyNow>
+        <ButtonBuyNow onClick={() => handleBuyNow()}>Buy Now >></ButtonBuyNow>
       </CartModelContainer>
     </>
   );
