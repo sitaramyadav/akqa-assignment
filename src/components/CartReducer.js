@@ -1,16 +1,11 @@
 import { productInfo } from "./products";
-import {
-  ADD_TO_CART,
-  GET_PRODUCT_INFO,
-  GET_CART_QUANTITY,
-  COMPUTE_CART_TOTAL
-} from "../Constants";
+import { ADD_TO_CART, GET_PRODUCT_INFO, GET_CART_QUANTITY } from "../Constants";
 
 const initialCart = [
   {
     productTitle: "Lorem ipsum dolor sit amet",
     quantity: 1,
-    price: 397,
+    price: 198.99,
     img: productInfo.productCardImg
   }
 ];

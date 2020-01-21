@@ -3,7 +3,6 @@ import { Header } from "./common/Header";
 import { ProductCatalogue } from "./ProductCatalogue";
 import { initialState, reducer } from "./CartReducer";
 import { CartModal } from "./CartModal";
-import { COMPUTE_CART_TOTAL } from "../Constants";
 import { Cart } from "./Cart";
 
 export const MainContainer = () => {

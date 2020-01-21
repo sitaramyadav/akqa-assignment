@@ -119,7 +119,6 @@ export const CartModal = ({ cart, setshowModel }) => {
                 <TableHeading>Total Cost</TableHeading>
               </tr>
               {cart.map(function productsIntoCart(product, index) {
-                console.log(product, "product from cartModal");
                 return (
                   <tr key={index}>
                     <TableData>
