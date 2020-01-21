@@ -120,7 +120,7 @@ export const CartModal = ({ cart, setshowModel }) => {
     );
   };
 
-  const cartQuantityHandler = event => {
+  const quantityChangeHandler = event => {
     setQuantity(event.target.value);
     // This needs to be change if there is multiple type of product
     setTotalCost((totalCost * quantity).toFixed(2));
@@ -151,11 +151,17 @@ export const CartModal = ({ cart, setshowModel }) => {
                         <ProductDetail>
                           <ProductTitle>{product.productTitle}</ProductTitle>
                           <Price>{product.price}</Price>
-                          <input
-                            type={"number"}
+                          <select
                             value={quantity}
-                            onChange={cartQuantityHandler}
-                          />
+                            onChange={quantityChangeHandler}
+                          >
+                            <option value={1}>{1}</option>
+                            <option value={2}>{2}</option>
+
+                            <option value={3}>{3}</option>
+
+                            <option value={4}>{4}</option>
+                          </select>
                         </ProductDetail>
                       </ProductInfo>
                       <TotalPrice>
