@@ -34,6 +34,9 @@ const TableData = styled.td`
   border-collapse: collapse;
   padding: 5px 0 5px 0;
   text-align: left;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 `;
 
 const SubTotal = styled.td`
@@ -60,10 +63,15 @@ const CartTitle = styled.h3`
 
 const ProductTitle = styled.p``;
 
-const ProductInTheCart = styled.section`
+const ProductInfo = styled.section`
   display: flex;
   justify-content: flex-start;
   align-items: center;
+`;
+
+const TotalPrice = styled.section`
+  display: flex;
+  width: 90px;
 `;
 
 const ButtonBuyNow = styled.button`
@@ -88,21 +96,35 @@ const CloseModal = styled.button`
   right: 0;
 `;
 
-export const CartModal = ({ cart, setshowModel }) => {
-  // const [subTotal, setSubTotal] = useState(0);
-  // const [total, setTotal] = useState(0);
-  const subTotal = cart.reduce(function(accumulator, currentValue) {
-    return Number(accumulator) + Number(currentValue.price);
-  }, 0);
+const ProductDetail = styled.section``;
 
-  const subTotalIncludingVat = subTotal * (20 / 100);
-  const total = subTotalIncludingVat + subTotal;
+const Price = styled.p``;
+
+export const CartModal = ({ cart, setshowModel }) => {
+  const [quantity, setQuantity] = useState(cart.length);
+  const [totalCost, setTotalCost] = useState(0);
+  const [totalCostIncludingVat, setSubTotalIncludingVat] = useState(0);
+
+  // const subTotal = cart.reduce(function(accumulator, currentValue) {
+  //   return Number(accumulator) + Number(currentValue.price);
+  // }, 0);
+
+  // const subTotalIncludingVat = subTotal * (20 / 100);
+  // const total = subTotalIncludingVat + subTotal;
 
   const handleBuyNow = () => {
     setshowModel(false);
     alert(
-      `{ Subtotal: ${subTotal}, Vat: ${subTotalIncludingVat}, total: ${total}}`
+      `{ Subtotal: ${totalCost}, Vat: ${(totalCost * 20) /
+        100}, total: ${totalCostIncludingVat}}`
     );
+  };
+
+  const cartQuantityHandler = event => {
+    setQuantity(event.target.value);
+    // This needs to be change if there is multiple type of product
+    setTotalCost((totalCost * quantity).toFixed(2));
+    setSubTotalIncludingVat((totalCost * (20 / 100)).toFixed(2));
   };
 
   return (
@@ -122,28 +144,38 @@ export const CartModal = ({ cart, setshowModel }) => {
                 return (
                   <tr key={index}>
                     <TableData>
-                      <ProductInTheCart>
+                      <ProductInfo>
                         <picture>
                           <img src={CartThumImageUrl} alt="Product Image" />
                         </picture>
-                        <ProductTitle>{product.productTitle}</ProductTitle>
+                        <ProductDetail>
+                          <ProductTitle>{product.productTitle}</ProductTitle>
+                          <Price>{product.price}</Price>
+                          <input
+                            type={"number"}
+                            value={quantity}
+                            onChange={cartQuantityHandler}
+                          />
+                        </ProductDetail>
+                      </ProductInfo>
+                      <TotalPrice>
                         <picture>
                           <img src={DeleteIcon} alt="Delete from cart" />
                         </picture>
-                      </ProductInTheCart>
+                        <Price>{product.price * quantity}</Price>
+                      </TotalPrice>
                     </TableData>
-                    <TableData>{product.price}</TableData>
                   </tr>
                 );
               })}
               <tr>
                 <SubTotal>
-                  <p>Subtotal {subTotal}</p>
-                  <p>Vat @ 20% {subTotalIncludingVat}</p>
+                  <p>Subtotal {totalCost}</p>
+                  <p>Vat @ 20% {totalCostIncludingVat}</p>
                 </SubTotal>
               </tr>
               <tr>
-                <Total>Total Cost $ {total}</Total>
+                <Total>Total Cost $ {totalCostIncludingVat}</Total>
               </tr>
             </tbody>
           </TableStyling>
