@@ -3,6 +3,7 @@ import styled from "styled-components";
 import IconButtonCart from "../../images/cart-btn.svg";
 import ProductCardImg from "../../images/cart-thumb.jpg";
 import { ADD_TO_CART } from "../Constants";
+import { PrimaryButton } from "./PraimaryButton";
 
 const CardContainer = styled.li`
   list-style-type: none;
@@ -14,15 +15,7 @@ const CartFooter = styled.figcaption`
   justify-content: space-between;
   margin-top: 10px;
 `;
-const ButtonAddToCart = styled.button`
-  background-color: red;
-  display: flex;
-  color: white;
-  padding: 0px 10px 0 10px;
-  justify-content: space-between;
-  cursor: pointer;
-  font-size: 16px;
-`;
+const ButtonAddToCart = styled(PrimaryButton)``;
 
 const IconAddToCart = styled.img`
   margin: 17px 10px 0 0;

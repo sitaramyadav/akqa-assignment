@@ -3,20 +3,17 @@ import styled from "styled-components";
 
 import akqaLog from "../../../images/akqa-logo.jpg";
 import cartLogo from "../../../images/cart-icon.svg";
-import { ADD_TO_CART } from "../../Constants";
 
 const HeaderContainer = styled.header`
   display: flex;
   justify-content: space-between;
-  // background-color: #f8f4f4;
   border-bottom: 1px solid black;
   margin: 10px 50px;
 `;
 
-const CardIcon = styled.picture`
+const CartIconContainer = styled.picture`
   position: relative;
   top: 20px;
-  cursor: pointer;
 `;
 
 const IconCartButton = styled.img`
@@ -36,6 +33,12 @@ const CountItermInTheCart = styled.figcaption`
   background-color: red;
 `;
 
+const CartIcon = styled.img`
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+`;
+
 const Counter = styled.p`
   position: relative;
   bottom: 22px;
@@ -49,8 +52,8 @@ export const Header = ({ quantity, onClickHandler, showModel }) => {
       <picture>
         <IconCartButton src={akqaLog} alt={"akqa logo"} />
       </picture>
-      <CardIcon>
-        <img
+      <CartIconContainer>
+        <CartIcon
           onClick={() => onClickHandler(!showModel)}
           src={cartLogo}
           alt={"cart logo"}
@@ -58,7 +61,7 @@ export const Header = ({ quantity, onClickHandler, showModel }) => {
         <CountItermInTheCart>
           <Counter>{quantity}</Counter>
         </CountItermInTheCart>
-      </CardIcon>
+      </CartIconContainer>
     </HeaderContainer>
   );
 };
