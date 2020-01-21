@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import CartThumImageUrl from "../../images/cart-thumb.jpg";
+import DeleteIcon from "../../images/icn-bin.png";
 const CartModelContainer = styled.article`
   position: absolute;
   top: 20%;
@@ -124,12 +125,12 @@ export const CartModal = ({ cart, setshowModel }) => {
                     <TableData>
                       <ProductInTheCart>
                         <picture>
-                          <img
-                            src={CartThumImageUrl}
-                            alt="product image in the cart"
-                          />
+                          <img src={CartThumImageUrl} alt="Product Image" />
                         </picture>
                         <ProductTitle>{product.productTitle}</ProductTitle>
+                        <picture>
+                          <img src={DeleteIcon} alt="Delete from cart" />
+                        </picture>
                       </ProductInTheCart>
                     </TableData>
                     <TableData>{product.price}</TableData>
