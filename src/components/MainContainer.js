@@ -4,11 +4,14 @@ import { ProductCatalogue } from "./ProductCatalogue";
 import { initialState, reducer } from "./CartReducer";
 import { CartModal } from "./CartModal";
 import { COMPUTE_CART_TOTAL } from "../Constants";
+import { OpenCart } from "./OpenCart";
 
 export const MainContainer = () => {
   const [store, dispatch] = useReducer(reducer, initialState);
   const [showModel, setshowModel] = useState(false);
-  console.log(showModel, "from main container");
+  const toggleModal = () => {
+    setshowModel(!showModel);
+  };
   return (
     <>
       <Header
@@ -21,6 +24,7 @@ export const MainContainer = () => {
         onClickHandler={dispatch}
         showModel={showModel}
       />
+      <OpenCart toggleModal={toggleModal} />
       {showModel && <CartModal cart={store.cart} setshowModel={setshowModel} />}
     </>
   );
