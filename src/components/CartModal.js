@@ -2,7 +2,7 @@ import React from "react";
 import styled, { css } from "styled-components";
 import CartThumImageUrl from "../../images/cart-thumb.jpg";
 import DeleteIcon from "../../images/icn-bin.png";
-import { UPDATE_CART } from "../Constants";
+import { UPDATE_CART, REMOVE_ITEM } from "../Constants";
 const CartModelContainer = styled.article`
   position: absolute;
   top: 20%;
@@ -139,51 +139,65 @@ export const CartModal = ({ cart, setshowModel, quantityChangeHandler }) => {
                 <TableHeading>Product</TableHeading>
                 <TableHeading>Total Cost</TableHeading>
               </TableRow>
-              {cart.products.map(function productsIntoCart(product, index) {
-                console.log(product, "from CartModal");
-                return (
-                  <TableRow key={index}>
-                    <TableData>
-                      <ProductInfo>
-                        <picture>
-                          <img src={CartThumImageUrl} alt="Product Image" />
-                        </picture>
-                        <ProductDetail>
-                          <ProductTitle>{product.productTitle}</ProductTitle>
-                          <Price>$ {product.price}</Price>
-                          <select
-                            value={product.quantity}
-                            onChange={event => {
-                              quantityChangeHandler({
-                                type: UPDATE_CART,
-                                payload: {
-                                  quantity: event.target.value,
-                                  price: product.price,
-                                  totalCost: product.totalCost,
-                                  productTitle: product.productTitle
-                                }
-                              });
-                            }}
-                          >
-                            <option value={1}>{1}</option>
-                            <option value={2}>{2}</option>
+              {cart.products &&
+                cart.products.map(function productsIntoCart(product, index) {
+                  return (
+                    <TableRow key={index}>
+                      <TableData>
+                        <ProductInfo>
+                          <picture>
+                            <img src={CartThumImageUrl} alt="Product Image" />
+                          </picture>
+                          <ProductDetail>
+                            <ProductTitle>{product.productTitle}</ProductTitle>
+                            <Price>$ {product.price}</Price>
+                            <select
+                              value={product.quantity}
+                              onChange={event => {
+                                quantityChangeHandler({
+                                  type: UPDATE_CART,
+                                  payload: {
+                                    quantity: event.target.value,
+                                    price: product.price,
+                                    totalCost: product.totalCost,
+                                    productTitle: product.productTitle
+                                  }
+                                });
+                              }}
+                            >
+                              <option value={1}>{1}</option>
+                              <option value={2}>{2}</option>
 
-                            <option value={3}>{3}</option>
+                              <option value={3}>{3}</option>
 
-                            <option value={4}>{4}</option>
-                          </select>
-                        </ProductDetail>
-                      </ProductInfo>
-                      <TotalCostContainer>
-                        <picture>
-                          <TrashIcon src={DeleteIcon} alt="Delete from cart" />
-                        </picture>
-                        <TotalCost>$ {product.totalCost}</TotalCost>
-                      </TotalCostContainer>
-                    </TableData>
-                  </TableRow>
-                );
-              })}
+                              <option value={4}>{4}</option>
+                            </select>
+                          </ProductDetail>
+                        </ProductInfo>
+                        <TotalCostContainer>
+                          <picture>
+                            <TrashIcon
+                              src={DeleteIcon}
+                              alt="Delete from cart"
+                              onClick={event => {
+                                quantityChangeHandler({
+                                  type: REMOVE_ITEM,
+                                  payload: {
+                                    quantity: event.target.value,
+                                    price: product.price,
+                                    totalCost: product.totalCost,
+                                    productTitle: product.productTitle
+                                  }
+                                });
+                              }}
+                            />
+                          </picture>
+                          <TotalCost>$ {product.totalCost}</TotalCost>
+                        </TotalCostContainer>
+                      </TableData>
+                    </TableRow>
+                  );
+                })}
               <tr>
                 <SubTotal>
                   <p>Subtotal $ {cart.subTotal}</p>

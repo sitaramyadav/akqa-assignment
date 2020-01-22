@@ -24,19 +24,20 @@ export const ProductCatalogue = ({ store, onClickHandler, showModel }) => {
         Lorem ipsum dolor sit amet
       </ProdctListCatalogTitle>
       <ProductList>
-        {store.products.map((product, index) => {
-          return (
-            <Product
-              key={index}
-              title={product.title}
-              productImage={product.productCardImg}
-              price={product.price}
-              shortDescription={product.shortDescription}
-              onClickHandler={onClickHandler}
-              showModel={showModel}
-            />
-          );
-        })}
+        {store.products &&
+          store.products.map((product, index) => {
+            return (
+              <Product
+                key={index}
+                title={product.title}
+                productImage={product.productCardImg}
+                price={product.price}
+                shortDescription={product.shortDescription}
+                onClickHandler={onClickHandler}
+                showModel={showModel}
+              />
+            );
+          })}
       </ProductList>
     </MainContainer>
   );

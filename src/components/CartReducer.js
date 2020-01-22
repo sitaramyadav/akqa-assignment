@@ -1,5 +1,5 @@
 import { productInfo } from "./products";
-import { ADD_TO_CART, UPDATE_CART } from "../Constants";
+import { ADD_TO_CART, UPDATE_CART, REMOVE_ITEM } from "../Constants";
 
 const initialCart = {
   products: [
@@ -66,6 +66,15 @@ export function reducer(state, action) {
             Number(_subTotal_) + Number(_vat_)
           ).toFixed(2)
         }
+      };
+    case REMOVE_ITEM:
+      const copyProducts = state.cart && [...state.cart];
+      const indexToBeRemoved =
+        copyProducts && copyProducts.findIndex(action.payload);
+      copyProducts.splice(indexToBeRemoved, indexToBeRemoved + 1);
+      return {
+        ...state,
+        cart: { ...state.cart, products: copyProducts }
       };
     default:
       throw new Error();
