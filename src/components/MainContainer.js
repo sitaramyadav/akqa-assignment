@@ -12,12 +12,6 @@ export const MainContainer = () => {
     setshowModel(!showModel);
   };
 
-  // useEffect(() => {
-  //   dispatch();
-  //   return () => {
-  //     cleanup;
-  //   };
-  // }, [showModel]);
   return (
     <>
       <Header
@@ -37,7 +31,10 @@ export const MainContainer = () => {
           quantityChangeHandler={dispatch}
         />
       )}
-      <Cart toggleModal={toggleModal} />
+      <Cart
+        toggleModal={toggleModal}
+        quantity={store.cart.products.length <= 0}
+      />
     </>
   );
 };

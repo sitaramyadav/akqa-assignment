@@ -10,8 +10,14 @@ const OpenCartButton = styled(PrimaryButton)`
   font-size: 24px;
   border-radius: 15px;
   font-weight: bold;
+  cursor: pointer;
+  cursor: ${props => (props.quantity ? "no-drop;" : "pointer")};
 `;
 
-export const Cart = ({ toggleModal }) => {
-  return <OpenCartButton onClick={() => toggleModal()}>Cart</OpenCartButton>;
+export const Cart = ({ toggleModal, quantity }) => {
+  return (
+    <OpenCartButton onClick={() => toggleModal()} disabled={quantity}>
+      Cart
+    </OpenCartButton>
+  );
 };

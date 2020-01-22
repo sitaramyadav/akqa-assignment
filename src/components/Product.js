@@ -15,7 +15,9 @@ const CartFooter = styled.figcaption`
   justify-content: space-between;
   margin-top: 10px;
 `;
-const ButtonAddToCart = styled(PrimaryButton)``;
+const ButtonAddToCart = styled(PrimaryButton)`
+  cursor: ${props => (props.showModel ? "no-drop;" : "pointer")};
+`;
 
 const IconAddToCart = styled.img`
   margin: 17px 10px 0 0;
@@ -40,7 +42,8 @@ export const Product = ({
   productImage,
   price,
   shortDescription,
-  onClickHandler
+  onClickHandler,
+  showModel
 }) => {
   return (
     <CardContainer>
@@ -61,6 +64,8 @@ export const Product = ({
                 }
               })
             }
+            disabled={showModel}
+            showModel={showModel}
           >
             <IconAddToCart src={IconButtonCart} alt={"Card btn"} />
             <p>ADD TO CART</p>

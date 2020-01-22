@@ -33,6 +33,7 @@ export const ProductCatalogue = ({ store, onClickHandler, showModel }) => {
               price={product.price}
               shortDescription={product.shortDescription}
               onClickHandler={onClickHandler}
+              showModel={showModel}
             />
           );
         })}
