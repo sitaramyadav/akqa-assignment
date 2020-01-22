@@ -35,10 +35,20 @@ export const initialState = {
 export function reducer(state, action) {
   switch (action.type) {
     case ADD_TO_CART:
+      const newCart = action.payload;
+      newCart.totalCost = action.payload.price;
+      const products = [...state.cart.products, newCart];
+      const subTotal = Number(computeSubTotal(products)).toFixed(2);
+      const vat = (subTotal * (20 / 100)).toFixed(2);
       return {
         ...state,
         cart: {
-          products: [...state.cart.products, action.payload]
+          products,
+          subTotal,
+          vat,
+          totialCostIncludingVat: Number(
+            Number(subTotal) + Number(vat)
+          ).toFixed(2)
         }
       };
 
