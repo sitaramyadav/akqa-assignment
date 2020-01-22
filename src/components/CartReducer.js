@@ -1,19 +1,24 @@
 import { productInfo } from "./products";
-import { ADD_TO_CART, GET_PRODUCT_INFO, GET_CART_QUANTITY } from "../Constants";
+import {
+  ADD_TO_CART,
+  GET_PRODUCT_INFO,
+  GET_CART_QUANTITY,
+  UPDATE_TOTAL_COST,
+  UPDATE_CART
+} from "../Constants";
 
 const initialCart = {
   products: [
     {
-      productTitle: "Lorem ipsum dolor sit amet",
+      productTitle: "Lorem ipsum dolor sit",
       quantity: 1,
       price: 198.99,
-      img: productInfo.productCardImg
+      totalCost: 198.99
     }
   ],
-
-  totalCost: 0,
-  vat: 20,
-  totialCostIncludingVat: 0
+  vat: 39.78,
+  subTotal: 238.76,
+  totialCostIncludingVat: 278.54
 };
 
 const initialProductState = new Array(6).fill(productInfo);
@@ -42,16 +47,52 @@ export function reducer(state, action) {
           products: [...state.cart.products, action.payload]
         }
       };
+
     case GET_PRODUCT_INFO:
       return { ...state, products: state.products };
+
     case UPDATE_CART:
+      const updatedProducts = updateCartProduct(state, action.payload);
+      const _subTotal_ = Number(computeSubTotal(updatedProducts)).toFixed(2);
+      const _vat_ = (_subTotal_ * (20 / 100)).toFixed(2);
       return {
         ...state,
         cart: {
-          products: [...state.cart.products, action.payload.product]
+          products: updatedProducts,
+          subTotal: _subTotal_,
+          vat: _vat_,
+          totialCostIncludingVat: Number(
+            Number(_subTotal_) + Number(_vat_)
+          ).toFixed(2)
         }
       };
     default:
       throw new Error();
   }
+}
+
+function updateCartProduct(state, payload) {
+  return state.cart.products.map((product, index) => {
+    if (product.productTitle === payload.productTitle) {
+      return {
+        quantity: payload.quantity,
+        productTitle: payload.productTitle,
+        price: payload.price,
+        totalCost: (Number(payload.price) * Number(payload.quantity)).toFixed(2)
+      };
+    } else {
+      return {
+        quantity: product.quantity,
+        productTitle: product.productTitle,
+        price: product.price,
+        totalCost: product.totalCost
+      };
+    }
+  });
+}
+
+function computeSubTotal(products) {
+  return products.reduce((acc, currProduct) => {
+    return Number(acc) + Number(currProduct.totalCost);
+  }, 0);
 }

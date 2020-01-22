@@ -31,7 +31,11 @@ export const MainContainer = () => {
         showModel={showModel}
       />
       {showModel && (
-        <CartModal cart={store.cart.products} setshowModel={setshowModel} />
+        <CartModal
+          cart={store.cart}
+          setshowModel={setshowModel}
+          quantityChangeHandler={dispatch}
+        />
       )}
       <Cart toggleModal={toggleModal} />
     </>

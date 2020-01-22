@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import CartThumImageUrl from "../../images/cart-thumb.jpg";
 import DeleteIcon from "../../images/icn-bin.png";
+import { UPDATE_CART, UPDATE_TOTAL_COST } from "../Constants";
 const CartModelContainer = styled.article`
   position: absolute;
   top: 20%;
@@ -100,31 +101,10 @@ const ProductDetail = styled.section``;
 
 const Price = styled.p``;
 
-export const CartModal = ({ cart, setshowModel }) => {
-  const [quantity, setQuantity] = useState(cart.length);
-  const [totalCost, setTotalCost] = useState(0);
-  const [totalCostIncludingVat, setSubTotalIncludingVat] = useState(0);
-
-  // const subTotal = cart.reduce(function(accumulator, currentValue) {
-  //   return Number(accumulator) + Number(currentValue.price);
-  // }, 0);
-
-  // const subTotalIncludingVat = subTotal * (20 / 100);
-  // const total = subTotalIncludingVat + subTotal;
-
-  const handleBuyNow = () => {
+export const CartModal = ({ cart, setshowModel, quantityChangeHandler }) => {
+  const handleBuyNow = (subTotal, total, vat) => {
     setshowModel(false);
-    alert(
-      `{ Subtotal: ${totalCost}, Vat: ${(totalCost * 20) /
-        100}, total: ${totalCostIncludingVat}}`
-    );
-  };
-
-  const quantityChangeHandler = event => {
-    setQuantity(event.target.value);
-    // This needs to be change if there is multiple type of product
-    setTotalCost((totalCost * quantity).toFixed(2));
-    setSubTotalIncludingVat((totalCost * (20 / 100)).toFixed(2));
+    alert(`{ subtotal: ${subTotal}, total: ${total} vat: ${(vat * 20) / 100}}`);
   };
 
   return (
@@ -140,7 +120,8 @@ export const CartModal = ({ cart, setshowModel }) => {
                 <TableHeading>Product</TableHeading>
                 <TableHeading>Total Cost</TableHeading>
               </tr>
-              {cart.map(function productsIntoCart(product, index) {
+              {cart.products.map(function productsIntoCart(product, index) {
+                console.log(product, "from CartModal");
                 return (
                   <tr key={index}>
                     <TableData>
@@ -150,10 +131,20 @@ export const CartModal = ({ cart, setshowModel }) => {
                         </picture>
                         <ProductDetail>
                           <ProductTitle>{product.productTitle}</ProductTitle>
-                          <Price>{product.price}</Price>
+                          <Price>$ {product.price}</Price>
                           <select
-                            value={quantity}
-                            onChange={quantityChangeHandler}
+                            value={product.quantity}
+                            onChange={event => {
+                              quantityChangeHandler({
+                                type: UPDATE_CART,
+                                payload: {
+                                  quantity: event.target.value,
+                                  price: product.price,
+                                  totalCost: product.totalCost,
+                                  productTitle: product.productTitle
+                                }
+                              });
+                            }}
                           >
                             <option value={1}>{1}</option>
                             <option value={2}>{2}</option>
@@ -168,7 +159,7 @@ export const CartModal = ({ cart, setshowModel }) => {
                         <picture>
                           <img src={DeleteIcon} alt="Delete from cart" />
                         </picture>
-                        <Price>{product.price * quantity}</Price>
+                        <Price>$ {product.totalCost}</Price>
                       </TotalPrice>
                     </TableData>
                   </tr>
@@ -176,17 +167,23 @@ export const CartModal = ({ cart, setshowModel }) => {
               })}
               <tr>
                 <SubTotal>
-                  <p>Subtotal {totalCost}</p>
-                  <p>Vat @ 20% {totalCostIncludingVat}</p>
+                  <p>Subtotal $ {cart.subTotal}</p>
+                  <p>Vat @ 20% {cart.vat}</p>
                 </SubTotal>
               </tr>
               <tr>
-                <Total>Total Cost $ {totalCostIncludingVat}</Total>
+                <Total>Total Cost $ {cart.totialCostIncludingVat}</Total>
               </tr>
             </tbody>
           </TableStyling>
         </CartItems>
-        <ButtonBuyNow onClick={() => handleBuyNow()}>Buy Now >></ButtonBuyNow>
+        <ButtonBuyNow
+          onClick={() =>
+            handleBuyNow(cart.subTotal, cart.totialCostIncludingVat, cart.vat)
+          }
+        >
+          Buy Now >>
+        </ButtonBuyNow>
       </CartModelContainer>
     </>
   );
