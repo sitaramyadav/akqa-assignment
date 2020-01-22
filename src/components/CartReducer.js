@@ -1,11 +1,5 @@
 import { productInfo } from "./products";
-import {
-  ADD_TO_CART,
-  GET_PRODUCT_INFO,
-  GET_CART_QUANTITY,
-  UPDATE_TOTAL_COST,
-  UPDATE_CART
-} from "../Constants";
+import { ADD_TO_CART, UPDATE_CART } from "../Constants";
 
 const initialCart = {
   products: [
@@ -47,9 +41,6 @@ export function reducer(state, action) {
           products: [...state.cart.products, action.payload]
         }
       };
-
-    case GET_PRODUCT_INFO:
-      return { ...state, products: state.products };
 
     case UPDATE_CART:
       const updatedProducts = updateCartProduct(state, action.payload);

@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
 import CartThumImageUrl from "../../images/cart-thumb.jpg";
 import DeleteIcon from "../../images/icn-bin.png";
-import { UPDATE_CART, UPDATE_TOTAL_COST } from "../Constants";
+import { UPDATE_CART } from "../Constants";
 const CartModelContainer = styled.article`
   position: absolute;
   top: 20%;
