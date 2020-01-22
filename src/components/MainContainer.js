@@ -11,10 +11,17 @@ export const MainContainer = () => {
   const toggleModal = () => {
     setshowModel(!showModel);
   };
+
+  // useEffect(() => {
+  //   dispatch();
+  //   return () => {
+  //     cleanup;
+  //   };
+  // }, [showModel]);
   return (
     <>
       <Header
-        quantity={store.cart.length}
+        quantity={store.cart.products.length}
         onClickHandler={setshowModel}
         showModel={showModel}
       />
@@ -23,7 +30,9 @@ export const MainContainer = () => {
         onClickHandler={dispatch}
         showModel={showModel}
       />
-      {showModel && <CartModal cart={store.cart} setshowModel={setshowModel} />}
+      {showModel && (
+        <CartModal cart={store.cart.products} setshowModel={setshowModel} />
+      )}
       <Cart toggleModal={toggleModal} />
     </>
   );
