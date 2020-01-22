@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import CartThumImageUrl from "../../images/cart-thumb.jpg";
 import DeleteIcon from "../../images/icn-bin.png";
 import { UPDATE_CART } from "../Constants";
@@ -12,27 +12,27 @@ const CartModelContainer = styled.article`
   box-shadow: 10px 10px 5px #e1d9d9;
   padding: 20px;
 `;
-
-const TableStyling = styled.table`
+const commonStyleForTable = css`
   border-top: 1px solid black;
   border-bottom: 1px solid black;
   border-collapse: collapse;
+`;
+const TableStyling = styled.table`
+  ${commonStyleForTable}
 `;
 
 const CartItems = styled.section`
   margin: 60px 0 30px 0;
 `;
 const TableHeading = styled.th`
-  border-top: 1px solid black;
-  border-bottom: 1px solid black;
-  border-collapse: collapse;
+  ${commonStyleForTable}
+
   padding: 10px 0px 10px 0px;
   text-align: left;
 `;
 const TableData = styled.td`
-  border-top: 1px solid black;
-  border-bottom: 1px solid black;
-  border-collapse: collapse;
+  // ${commonStyleForTable}
+
   padding: 5px 0 5px 0;
   text-align: left;
   display: flex;
@@ -41,21 +41,23 @@ const TableData = styled.td`
 `;
 
 const SubTotal = styled.td`
+  // ${commonStyleForTable}
+
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  border-top: 1px solid black;
-  border-bottom: 1px solid black;
-  border-collapse: collapse;
 `;
 
 const Total = styled.td`
+  // ${commonStyleForTable}
+
   display: flex;
   flex-direction: flex-end;
   justify-content: flex-end;
-  border-top: 1px solid black;
-  border-bottom: 1px solid black;
-  border-collapse: collapse;
+`;
+
+const TableRow = styled.tr`
+  ${commonStyleForTable}
 `;
 
 const CartTitle = styled.h3`
@@ -70,9 +72,12 @@ const ProductInfo = styled.section`
   align-items: center;
 `;
 
-const TotalPrice = styled.section`
+const TotalCostContainer = styled.section`
   display: flex;
   width: 90px;
+  position: relative;
+  left: 60px;
+  top: 0;
 `;
 
 const ButtonBuyNow = styled.button`
@@ -97,6 +102,17 @@ const CloseModal = styled.button`
   right: 0;
 `;
 
+const TrashIcon = styled.img`
+  position: relative;
+  left: 0px;
+  top: 10px;
+`;
+
+const TotalCost = styled.p`
+  position: relative;
+  left: 20px;
+`;
+
 const ProductDetail = styled.section``;
 
 const Price = styled.p``;
@@ -116,14 +132,14 @@ export const CartModal = ({ cart, setshowModel, quantityChangeHandler }) => {
         <CartItems>
           <TableStyling>
             <tbody>
-              <tr>
+              <TableRow>
                 <TableHeading>Product</TableHeading>
                 <TableHeading>Total Cost</TableHeading>
-              </tr>
+              </TableRow>
               {cart.products.map(function productsIntoCart(product, index) {
                 console.log(product, "from CartModal");
                 return (
-                  <tr key={index}>
+                  <TableRow key={index}>
                     <TableData>
                       <ProductInfo>
                         <picture>
@@ -155,14 +171,14 @@ export const CartModal = ({ cart, setshowModel, quantityChangeHandler }) => {
                           </select>
                         </ProductDetail>
                       </ProductInfo>
-                      <TotalPrice>
+                      <TotalCostContainer>
                         <picture>
-                          <img src={DeleteIcon} alt="Delete from cart" />
+                          <TrashIcon src={DeleteIcon} alt="Delete from cart" />
                         </picture>
-                        <Price>$ {product.totalCost}</Price>
-                      </TotalPrice>
+                        <TotalCost>$ {product.totalCost}</TotalCost>
+                      </TotalCostContainer>
                     </TableData>
-                  </tr>
+                  </TableRow>
                 );
               })}
               <tr>
@@ -171,9 +187,9 @@ export const CartModal = ({ cart, setshowModel, quantityChangeHandler }) => {
                   <p>Vat @ 20% {cart.vat}</p>
                 </SubTotal>
               </tr>
-              <tr>
+              <TableRow>
                 <Total>Total Cost $ {cart.totialCostIncludingVat}</Total>
-              </tr>
+              </TableRow>
             </tbody>
           </TableStyling>
         </CartItems>
