@@ -88,6 +88,8 @@ const ButtonBuyNow = styled.button`
   background-color: red;
   font-size: 16px;
   padding: 5px 10px 05px 10px;
+
+  cursor: ${props => (props.disabled ? "no-drop;" : "pointer")};
 `;
 
 const CloseModal = styled.button`
@@ -106,6 +108,7 @@ const TrashIcon = styled.img`
   position: relative;
   left: 0px;
   top: 10px;
+  cursor: pointer;
 `;
 
 const TotalCost = styled.p`
@@ -197,6 +200,7 @@ export const CartModal = ({ cart, setshowModel, quantityChangeHandler }) => {
           onClick={() =>
             handleBuyNow(cart.subTotal, cart.totialCostIncludingVat, cart.vat)
           }
+          disabled={cart.products.length <= 0}
         >
           Buy Now >>
         </ButtonBuyNow>
