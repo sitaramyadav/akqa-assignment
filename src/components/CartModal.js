@@ -88,8 +88,13 @@ const ButtonBuyNow = styled.button`
   background-color: red;
   font-size: 16px;
   padding: 5px 10px 05px 10px;
-
-  cursor: ${props => (props.disabled ? "no-drop;" : "pointer")};
+  cursor: pointer;
+  ${props =>
+    props.disabled === true &&
+    css`
+      cursor: no-drop;
+      opacity: 0.5;
+    `}
 `;
 
 const CloseModal = styled.button`
