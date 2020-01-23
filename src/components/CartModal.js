@@ -8,60 +8,72 @@ const CartModelContainer = styled.article`
   top: 20%;
   background-color: white;
   display: flex;
-  left: 30%;
+  left: 29%;
   box-shadow: 10px 10px 5px #e1d9d9;
   padding: 20px;
+  width: 800px;
+  box-sizing: border-box;
 `;
 const commonStyleForTable = css`
-  border-top: 1px solid black;
-  border-bottom: 1px solid black;
+  border-bottom: 2px solid black;
   border-collapse: collapse;
+  width: 100%;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0 10px;
 `;
 const TableStyling = styled.table`
   ${commonStyleForTable}
+  border-top: 2px solid black;
+  border-bottom: none;
+
+  width: 700px;
+  margin: 60px 0 30px 0;
+  box-sizing: border-box;
 `;
 
 const CartItems = styled.section`
-  margin: 60px 0 30px 0;
+  box-sizing: border-box;
 `;
-const TableHeading = styled.th`
+const TableHeading = styled.tr`
   ${commonStyleForTable}
-
-  padding: 10px 0px 10px 0px;
-  text-align: left;
 `;
 const TableData = styled.td`
-  // ${commonStyleForTable}
-
-  padding: 5px 0 5px 0;
+  box-sizing: border-box;
+  // padding: 10px 0 5px 0;
   text-align: left;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 700px;
 `;
 
 const SubTotal = styled.td`
-  // ${commonStyleForTable}
+  ${commonStyleForTable}
 
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-`;
-
-const Total = styled.td`
-  // ${commonStyleForTable}
-
-  display: flex;
-  flex-direction: flex-end;
-  justify-content: flex-end;
+  width: 700px;
 `;
 
 const TableRow = styled.tr`
-  ${commonStyleForTable}
+  width: 100%;
+  position: relative;
+  border-bottom: 2px solid black;
 `;
 
+const Total = styled.td`
+  display: flex;
+  flex-direction: flex-end;
+  justify-content: flex-end;
+  width: 700px;
+  padding: 10px 0 10px;
+`;
 const CartTitle = styled.h3`
   position: absolute;
+  top: 10px;
 `;
 
 const ProductTitle = styled.p``;
@@ -75,9 +87,6 @@ const ProductInfo = styled.section`
 const TotalCostContainer = styled.section`
   display: flex;
   width: 90px;
-  position: relative;
-  left: 60px;
-  top: 0;
 `;
 
 const ButtonBuyNow = styled.button`
@@ -87,7 +96,6 @@ const ButtonBuyNow = styled.button`
   color: white;
   background-color: red;
   font-size: 16px;
-  padding: 5px 10px 05px 10px;
   cursor: pointer;
   ${props =>
     props.disabled === true &&
@@ -140,10 +148,10 @@ export const CartModal = ({ cart, setshowModel, quantityChangeHandler }) => {
         <CartItems>
           <TableStyling>
             <tbody>
-              <TableRow>
-                <TableHeading>Product</TableHeading>
-                <TableHeading>Total Cost</TableHeading>
-              </TableRow>
+              <TableHeading>
+                <th>Product</th>
+                <th>Total Cost</th>
+              </TableHeading>
               {cart.products &&
                 cart.products.map(function productsIntoCart(product, index) {
                   return (
