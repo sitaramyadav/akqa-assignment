@@ -60,29 +60,54 @@ export function reducer(state, action) {
         ...state,
         cart: {
           products: updatedProducts,
-          subTotal: _subTotal_,
           vat: _vat_,
-          totialCostIncludingVat: Number(
-            Number(_subTotal_) + Number(_vat_)
-          ).toFixed(2)
+          subTotal: _subTotal_,
+          totialCostIncludingVat: 0
         }
       };
     case REMOVE_ITEM:
-      const copyProducts = state.cart && [...state.cart];
+      const length = state.cart.products.length;
+      const products_ = length === 1 ? [] : [...state.cart];
       const indexToBeRemoved =
-        copyProducts && copyProducts.findIndex(action.payload);
-      copyProducts.splice(indexToBeRemoved, indexToBeRemoved + 1);
+        length > 1 && products_.findIndex(action.payload);
+      products_.splice(indexToBeRemoved, indexToBeRemoved + 1);
+      cartProductComputation(products_);
+      const {
+        vat_,
+        subTotal_,
+        totialCostIncludingVat_
+      } = cartProductComputation(products_);
+
       return {
         ...state,
-        cart: { ...state.cart, products: copyProducts }
+        cart: {
+          ...state.cart,
+          products: products_,
+          vat: vat_,
+          subTotal: subTotal_,
+          totialCostIncludingVat: totialCostIncludingVat_
+        }
       };
     default:
       throw new Error();
   }
 }
 
+function cartProductComputation(products) {
+  if (products.length === 0) {
+    return {
+      subTotal: 0,
+      vat: 0,
+      totialCostIncludingVat: 0
+    };
+  }
+  const subTotal = computeSubTotal(products);
+  const vat = (subTotal * (20 / 100)).toFixed(2);
+  const totialCostIncludingVat = (subTotal + vat).toFixed(2);
+  return { subTotal, vat, totialCostIncludingVat };
+}
 function updateCartProduct(state, payload) {
-  return state.cart.products.map((product, index) => {
+  return state.cart.products.map(product => {
     if (product.productTitle === payload.productTitle) {
       return {
         quantity: payload.quantity,
@@ -103,6 +128,6 @@ function updateCartProduct(state, payload) {
 
 function computeSubTotal(products) {
   return products.reduce((acc, currProduct) => {
-    return Number(acc) + Number(currProduct.totalCost);
+    return Number(acc) + Number(currProduct.totalCost).toFixed(2);
   }, 0);
 }

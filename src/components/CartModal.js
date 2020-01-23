@@ -179,11 +179,11 @@ export const CartModal = ({ cart, setshowModel, quantityChangeHandler }) => {
                             <TrashIcon
                               src={DeleteIcon}
                               alt="Delete from cart"
-                              onClick={event => {
+                              onClick={() => {
                                 quantityChangeHandler({
                                   type: REMOVE_ITEM,
                                   payload: {
-                                    quantity: event.target.value,
+                                    quantity: product.quantity,
                                     price: product.price,
                                     totalCost: product.totalCost,
                                     productTitle: product.productTitle
