@@ -58,9 +58,8 @@ export const Product = ({
               onClickHandler({
                 type: ADD_TO_CART,
                 payload: {
-                  price: price,
-                  img: productImage,
-                  productTitle: title
+                  price,
+                  title
                 }
               })
             }

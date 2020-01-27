@@ -62,7 +62,7 @@ export function reducer(state, action) {
           products: updatedProducts,
           vat: _vat_,
           subTotal: _subTotal_,
-          totialCostIncludingVat: 0
+          totialCostIncludingVat: parseInt(_vat_) + parseInt(_subTotal_)
         }
       };
     case REMOVE_ITEM:
