@@ -6,13 +6,12 @@ const initialCart = {
     {
       productTitle: "Lorem ipsum dolor sit",
       quantity: 1,
-      price: 198.99,
-      totalCost: 198.99
+      price: 198.99
     }
   ],
   vat: 39.78,
   subTotal: 238.76,
-  totialCostIncludingVat: 278.54
+  totalCostIncludingVat: 278.54
 };
 
 const initialProductState = new Array(6).fill(productInfo);
@@ -34,37 +33,39 @@ export const initialState = {
 
 export function reducer(state, action) {
   switch (action.type) {
-    case ADD_TO_CART:
+    case ADD_TO_CART: {
       const newCart = action.payload;
       newCart.totalCost = action.payload.price;
       const products = [...state.cart.products, newCart];
-      const subTotal = Number(computeSubTotal(products)).toFixed(2);
-      const vat = (subTotal * (20 / 100)).toFixed(2);
+      const { vat, subTotal, totalCostIncludingVat } = cartProductComputation(
+        products
+      );
       return {
         ...state,
         cart: {
           products,
           subTotal,
           vat,
-          totialCostIncludingVat: Number(
-            Number(subTotal) + Number(vat)
-          ).toFixed(2)
+          totalCostIncludingVat
         }
       };
+    }
 
-    case UPDATE_CART:
-      const updatedProducts = updateCartProduct(state, action.payload);
-      const _subTotal_ = Number(computeSubTotal(updatedProducts)).toFixed(2);
-      const _vat_ = (_subTotal_ * (20 / 100)).toFixed(2);
+    case UPDATE_CART: {
+      const products = updateCartModalOnChange(state, action.payload);
+      const { vat, subTotal, totalCostIncludingVat } = cartProductComputation(
+        products
+      );
       return {
         ...state,
         cart: {
-          products: updatedProducts,
-          vat: _vat_,
-          subTotal: _subTotal_,
-          totialCostIncludingVat: parseInt(_vat_) + parseInt(_subTotal_)
+          products,
+          vat,
+          subTotal,
+          totalCostIncludingVat
         }
       };
+    }
     case REMOVE_ITEM:
       const length = state.cart.products.length;
       const products_ = length === 1 ? [] : [...state.cart];
@@ -100,13 +101,14 @@ function cartProductComputation(products) {
       vat: 0,
       totialCostIncludingVat: 0
     };
+  } else {
+    const subTotal = computeSubTotal(products);
+    const vat = (subTotal * (20 / 100)).toFixed(2);
+    const totialCostIncludingVat = subTotal + vat;
+    return { subTotal, vat, totialCostIncludingVat };
   }
-  const subTotal = computeSubTotal(products);
-  const vat = (subTotal * (20 / 100)).toFixed(2);
-  const totialCostIncludingVat = (subTotal + vat).toFixed(2);
-  return { subTotal, vat, totialCostIncludingVat };
 }
-function updateCartProduct(state, payload) {
+function updateCartModalOnChange(state, payload) {
   return state.cart.products.map(product => {
     if (product.productTitle === payload.productTitle) {
       return {
@@ -119,8 +121,7 @@ function updateCartProduct(state, payload) {
       return {
         quantity: product.quantity,
         productTitle: product.productTitle,
-        price: product.price,
-        totalCost: product.totalCost
+        price: product.price
       };
     }
   });
@@ -128,6 +129,9 @@ function updateCartProduct(state, payload) {
 
 function computeSubTotal(products) {
   return products.reduce((acc, currProduct) => {
-    return Number(acc) + Number(currProduct.totalCost).toFixed(2);
+    return (
+      acc +
+      parseInt(currProduct.price) * parseInt(currProduct.quantity)
+    ).toFixed(2);
   }, 0);
 }
