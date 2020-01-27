@@ -7,7 +7,6 @@ export const TableRow = styled.tr`
 `;
 export const TableData = styled.td`
   box-sizing: border-box;
-  // padding: 10px 0 5px 0;
   text-align: left;
   display: flex;
   justify-content: space-between;

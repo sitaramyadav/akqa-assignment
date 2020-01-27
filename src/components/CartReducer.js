@@ -6,7 +6,8 @@ const initialCart = {
     {
       productTitle: "Lorem ipsum dolor sit",
       quantity: 1,
-      price: 198.99
+      price: 198.99,
+      totalCost: 198.99
     }
   ],
   vat: 39.78,
@@ -121,7 +122,8 @@ function updateCartModalOnChange(state, payload) {
       return {
         quantity: product.quantity,
         productTitle: product.productTitle,
-        price: product.price
+        price: product.price,
+        totalCost: (Number(payload.price) * Number(product.quantity)).toFixed(2)
       };
     }
   });

@@ -2,6 +2,8 @@ import React from "react";
 import styled, { css } from "styled-components";
 import { CartItem } from "./CartItem";
 
+import { TableRow } from "./CartItemStyle";
+
 const CartModelContainer = styled.article`
   position: absolute;
   top: 20%;
@@ -109,7 +111,13 @@ export const CartModal = ({ cart, setshowModel, quantityChangeHandler }) => {
               </TableHeading>
               {cart.products &&
                 cart.products.map(function productsIntoCart(product, index) {
-                  return <CartItem product key={index} />;
+                  return (
+                    <CartItem
+                      product={product}
+                      key={`${index}${product}${product.CartTitle}`}
+                      quantityChangeHandler={quantityChangeHandler}
+                    />
+                  );
                 })}
               <tr>
                 <SubTotal>
