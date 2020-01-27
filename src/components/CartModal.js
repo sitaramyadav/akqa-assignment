@@ -126,14 +126,14 @@ export const CartModal = ({ cart, setshowModel, quantityChangeHandler }) => {
                 </SubTotal>
               </tr>
               <TableRow>
-                <Total>Total Cost $ {cart.totialCostIncludingVat}</Total>
+                <Total>Total Cost $ {cart.totalCostIncludingVat}</Total>
               </TableRow>
             </tbody>
           </TableStyling>
         </CartItems>
         <ButtonBuyNow
           onClick={() =>
-            handleBuyNow(cart.subTotal, cart.totialCostIncludingVat, cart.vat)
+            handleBuyNow(cart.subTotal, cart.totalCostIncludingVat, cart.vat)
           }
           disabled={cart.products.length <= 0}
         >

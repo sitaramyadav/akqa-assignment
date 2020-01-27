@@ -74,11 +74,9 @@ export function reducer(state, action) {
         length > 1 && products_.findIndex(action.payload);
       products_.splice(indexToBeRemoved, indexToBeRemoved + 1);
       cartProductComputation(products_);
-      const {
-        vat_,
-        subTotal_,
-        totialCostIncludingVat_
-      } = cartProductComputation(products_);
+      const { vat_, subTotal_, totalCostIncludingVat } = cartProductComputation(
+        products_
+      );
 
       return {
         ...state,
@@ -87,7 +85,7 @@ export function reducer(state, action) {
           products: products_,
           vat: vat_,
           subTotal: subTotal_,
-          totialCostIncludingVat: totialCostIncludingVat_
+          totalCostIncludingVat
         }
       };
     default:
@@ -100,13 +98,13 @@ function cartProductComputation(products) {
     return {
       subTotal: 0,
       vat: 0,
-      totialCostIncludingVat: 0
+      totalCostIncludingVat: 0
     };
   } else {
     const subTotal = computeSubTotal(products);
     const vat = (subTotal * (20 / 100)).toFixed(2);
-    const totialCostIncludingVat = subTotal + vat;
-    return { subTotal, vat, totialCostIncludingVat };
+    const totalCostIncludingVat = subTotal + vat;
+    return { subTotal, vat, totalCostIncludingVat };
   }
 }
 function updateCartModalOnChange(state, payload) {
