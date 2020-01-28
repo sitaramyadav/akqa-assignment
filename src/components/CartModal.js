@@ -114,7 +114,7 @@ export const CartModal = ({ cart, setshowModel, quantityChangeHandler }) => {
                   return (
                     <CartItem
                       product={product}
-                      key={`${index}${product}${product.CartTitle}`}
+                      key={`${index}${product}${product.title}`}
                       quantityChangeHandler={quantityChangeHandler}
                     />
                   );

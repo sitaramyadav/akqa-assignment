@@ -59,7 +59,7 @@ export const Product = ({
                 type: ADD_TO_CART,
                 payload: {
                   price,
-                  title
+                  productTitle: title
                 }
               })
             }

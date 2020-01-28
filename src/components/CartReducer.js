@@ -37,7 +37,8 @@ export function reducer(state, action) {
     case ADD_TO_CART: {
       const newCart = action.payload;
       newCart.totalCost = action.payload.price;
-      const products = [...state.cart.products, newCart];
+      newCart.quantity = 1;
+      const products = filterCommonProduct([...state.cart.products, newCart]);
       const { vat, subTotal, totalCostIncludingVat } = cartProductComputation(
         products
       );
@@ -73,7 +74,6 @@ export function reducer(state, action) {
       const indexToBeRemoved =
         length > 1 && products_.findIndex(action.payload);
       products_.splice(indexToBeRemoved, indexToBeRemoved + 1);
-      cartProductComputation(products_);
       const { vat_, subTotal_, totalCostIncludingVat } = cartProductComputation(
         products_
       );
@@ -91,6 +91,18 @@ export function reducer(state, action) {
     default:
       throw new Error();
   }
+}
+
+function filterCommonProduct(products) {
+  const common = products[0];
+  return products.filter(each => {
+    if (common.title === each.title) {
+      each.quantity = each.quantity + 1;
+      each.totalCost = each.price + each.quantity;
+    } else {
+      return each;
+    }
+  });
 }
 
 function cartProductComputation(products) {
@@ -129,9 +141,6 @@ function updateCartModalOnChange(state, payload) {
 
 function computeSubTotal(products) {
   return products.reduce((acc, currProduct) => {
-    return (
-      acc +
-      parseInt(currProduct.price) * parseInt(currProduct.quantity)
-    ).toFixed(2);
+    return acc + Number(currProduct.price) * Number(currProduct.quantity);
   }, 0);
 }

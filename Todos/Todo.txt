@@ -1,0 +1,7 @@
+Fixing the total for each type of product by title.
+    1. filter all the product which have the same title.
+    2. count the product which have the same title;
+    3. calcualte the total cost for each type of product => TotalCost= count * price.
+        1. calcualte the total cost when quantity is change.
+        2. calcualte the total cost when new product is been added into cart.
+        
