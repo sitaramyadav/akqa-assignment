@@ -1,9 +1,9 @@
 import React, { useReducer, useState } from "react";
 import { Header } from "./common/Header";
-import { ProductCatalogue } from "./ProductCatalogue";
-import { initialState, reducer } from "./CartReducer";
-import { CartModal } from "./CartModal";
-import { Cart } from "./Cart";
+import { ProductCatalogue } from "./product/ProductCatalogue";
+import { initialState, reducer } from "./cart/CartReducer";
+import { CartModal } from "./cart/CartModal";
+import Cart from "./cart";
 
 export const MainContainer = () => {
   const [store, dispatch] = useReducer(reducer, initialState);

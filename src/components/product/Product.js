@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "styled-components";
-import IconButtonCart from "../../images/cart-btn.svg";
-import ProductCardImg from "../../images/cart-thumb.jpg";
-import { ADD_TO_CART } from "../Constants";
-import { PrimaryButton } from "./PraimaryButton";
+import IconButtonCart from "../../../images/cart-btn.svg";
+import ProductCardImg from "../../../images/cart-thumb.jpg";
+import { ADD_TO_CART } from "../../Constants";
+import { PrimaryButton } from "../common/PraimaryButton";
 
 const CardContainer = styled.li`
   list-style-type: none;

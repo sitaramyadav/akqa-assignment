@@ -1,7 +1,7 @@
 import React from "react";
-import CartThumImageUrl from "../../images/cart-thumb.jpg";
-import DeleteIcon from "../../images/icn-bin.png";
-import { UPDATE_CART, REMOVE_ITEM } from "../Constants";
+import CartThumImageUrl from "../../../images/cart-thumb.jpg";
+import DeleteIcon from "../../../images/icn-bin.png";
+import { UPDATE_CART, REMOVE_ITEM } from "../../Constants";
 
 import {
   TableRow,

@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { PrimaryButton } from "./PraimaryButton";
+import { PrimaryButton } from "../common/PraimaryButton";
 
 const OpenCartButton = styled(PrimaryButton)`
   position: relative;

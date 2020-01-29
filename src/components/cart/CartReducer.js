@@ -1,5 +1,5 @@
-import { productInfo } from "./products";
-import { ADD_TO_CART, UPDATE_CART, REMOVE_ITEM } from "../Constants";
+import { productInfo } from "../products";
+import { ADD_TO_CART, UPDATE_CART, REMOVE_ITEM } from "../../Constants";
 
 const initialCart = {
   products: [
