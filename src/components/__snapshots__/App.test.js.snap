@@ -2,10 +2,310 @@
 
 exports[`<App /> Snapshot testing 1`] = `
 <div
+  class="sc-fzXfNl bUDzwJ"
   data-testid="app"
 >
-  <h1>
-    React, webpack, webpack dev middileware, babel, eslint setup 
-  </h1>
+  <header
+    class="sc-AykKE iZVCoV"
+  >
+    <picture>
+      <img
+        alt="akqa logo"
+        class="sc-AykKG ijTuup"
+        src="[object Object]"
+      />
+    </picture>
+    <picture
+      class="sc-AykKF hZodPr"
+    >
+      <img
+        alt="cart logo"
+        class="sc-AykKI eMtWNp"
+        src="[object Object]"
+      />
+      <figcaption
+        class="sc-AykKH eOdcxc"
+      >
+        <p
+          class="sc-AykKJ ibCMAl"
+        >
+          1
+        </p>
+      </figcaption>
+    </picture>
+  </header>
+  <main
+    class="sc-fzXfLV AHmoh"
+  >
+    <h2
+      class="sc-fzXfLX daonPZ"
+    >
+      Lorem ipsum dolor sit amet
+    </h2>
+    <ul
+      class="sc-fzXfLW jNpYZI"
+    >
+      <li
+        class="sc-fzXfLO kUUiEQ"
+      >
+        <h3
+          class="sc-fzXfLT ebhOlE"
+        >
+          Lorem ipsum dolor sit amet, consectetur adipiscing.
+        </h3>
+        <picture>
+          <img
+            alt="Card Image"
+            class="sc-fzXfLS gQkofv"
+            src="[object Object]"
+          />
+          <figcaption>
+            Lorem ipsum dolor sit amet. Praesent non erat a est gravida volutpat Vestibulum elit justo egestas vitae elit eget, porttitor scelerisque erat. Vestibulum elit nulla, lobortis non dapibus eu. nisi ornare fermentum. 
+          </figcaption>
+          <figcaption
+            class="sc-fzXfLP QTvUN"
+          >
+            <p
+              class="sc-fzXfLU jLvlxc"
+            >
+              Price: $
+              198.99
+            </p>
+            <button
+              class="sc-AykKK sc-fzXfLQ dwZFpm"
+            >
+              <img
+                alt="Card btn"
+                class="sc-fzXfLR iMZIzX"
+                src="[object Object]"
+              />
+              <p>
+                ADD TO CART
+              </p>
+            </button>
+          </figcaption>
+        </picture>
+      </li>
+      <li
+        class="sc-fzXfLO kUUiEQ"
+      >
+        <h3
+          class="sc-fzXfLT ebhOlE"
+        >
+          Lorem ipsum dolor sit amet, consectetur adipiscing.
+        </h3>
+        <picture>
+          <img
+            alt="Card Image"
+            class="sc-fzXfLS gQkofv"
+            src="[object Object]"
+          />
+          <figcaption>
+            Lorem ipsum dolor sit amet. Praesent non erat a est gravida volutpat Vestibulum elit justo egestas vitae elit eget, porttitor scelerisque erat. Vestibulum elit nulla, lobortis non dapibus eu. nisi ornare fermentum. 
+          </figcaption>
+          <figcaption
+            class="sc-fzXfLP QTvUN"
+          >
+            <p
+              class="sc-fzXfLU jLvlxc"
+            >
+              Price: $
+              198.99
+            </p>
+            <button
+              class="sc-AykKK sc-fzXfLQ dwZFpm"
+            >
+              <img
+                alt="Card btn"
+                class="sc-fzXfLR iMZIzX"
+                src="[object Object]"
+              />
+              <p>
+                ADD TO CART
+              </p>
+            </button>
+          </figcaption>
+        </picture>
+      </li>
+      <li
+        class="sc-fzXfLO kUUiEQ"
+      >
+        <h3
+          class="sc-fzXfLT ebhOlE"
+        >
+          Lorem ipsum dolor sit amet, consectetur adipiscing.
+        </h3>
+        <picture>
+          <img
+            alt="Card Image"
+            class="sc-fzXfLS gQkofv"
+            src="[object Object]"
+          />
+          <figcaption>
+            Lorem ipsum dolor sit amet. Praesent non erat a est gravida volutpat Vestibulum elit justo egestas vitae elit eget, porttitor scelerisque erat. Vestibulum elit nulla, lobortis non dapibus eu. nisi ornare fermentum. 
+          </figcaption>
+          <figcaption
+            class="sc-fzXfLP QTvUN"
+          >
+            <p
+              class="sc-fzXfLU jLvlxc"
+            >
+              Price: $
+              198.99
+            </p>
+            <button
+              class="sc-AykKK sc-fzXfLQ dwZFpm"
+            >
+              <img
+                alt="Card btn"
+                class="sc-fzXfLR iMZIzX"
+                src="[object Object]"
+              />
+              <p>
+                ADD TO CART
+              </p>
+            </button>
+          </figcaption>
+        </picture>
+      </li>
+      <li
+        class="sc-fzXfLO kUUiEQ"
+      >
+        <h3
+          class="sc-fzXfLT ebhOlE"
+        >
+          Lorem ipsum dolor sit amet, consectetur adipiscing.
+        </h3>
+        <picture>
+          <img
+            alt="Card Image"
+            class="sc-fzXfLS gQkofv"
+            src="[object Object]"
+          />
+          <figcaption>
+            Lorem ipsum dolor sit amet. Praesent non erat a est gravida volutpat Vestibulum elit justo egestas vitae elit eget, porttitor scelerisque erat. Vestibulum elit nulla, lobortis non dapibus eu. nisi ornare fermentum. 
+          </figcaption>
+          <figcaption
+            class="sc-fzXfLP QTvUN"
+          >
+            <p
+              class="sc-fzXfLU jLvlxc"
+            >
+              Price: $
+              198.99
+            </p>
+            <button
+              class="sc-AykKK sc-fzXfLQ dwZFpm"
+            >
+              <img
+                alt="Card btn"
+                class="sc-fzXfLR iMZIzX"
+                src="[object Object]"
+              />
+              <p>
+                ADD TO CART
+              </p>
+            </button>
+          </figcaption>
+        </picture>
+      </li>
+      <li
+        class="sc-fzXfLO kUUiEQ"
+      >
+        <h3
+          class="sc-fzXfLT ebhOlE"
+        >
+          Lorem ipsum dolor sit amet, consectetur adipiscing.
+        </h3>
+        <picture>
+          <img
+            alt="Card Image"
+            class="sc-fzXfLS gQkofv"
+            src="[object Object]"
+          />
+          <figcaption>
+            Lorem ipsum dolor sit amet. Praesent non erat a est gravida volutpat Vestibulum elit justo egestas vitae elit eget, porttitor scelerisque erat. Vestibulum elit nulla, lobortis non dapibus eu. nisi ornare fermentum. 
+          </figcaption>
+          <figcaption
+            class="sc-fzXfLP QTvUN"
+          >
+            <p
+              class="sc-fzXfLU jLvlxc"
+            >
+              Price: $
+              198.99
+            </p>
+            <button
+              class="sc-AykKK sc-fzXfLQ dwZFpm"
+            >
+              <img
+                alt="Card btn"
+                class="sc-fzXfLR iMZIzX"
+                src="[object Object]"
+              />
+              <p>
+                ADD TO CART
+              </p>
+            </button>
+          </figcaption>
+        </picture>
+      </li>
+      <li
+        class="sc-fzXfLO kUUiEQ"
+      >
+        <h3
+          class="sc-fzXfLT ebhOlE"
+        >
+          Lorem ipsum dolor sit amet, consectetur adipiscing.
+        </h3>
+        <picture>
+          <img
+            alt="Card Image"
+            class="sc-fzXfLS gQkofv"
+            src="[object Object]"
+          />
+          <figcaption>
+            Lorem ipsum dolor sit amet. Praesent non erat a est gravida volutpat Vestibulum elit justo egestas vitae elit eget, porttitor scelerisque erat. Vestibulum elit nulla, lobortis non dapibus eu. nisi ornare fermentum. 
+          </figcaption>
+          <figcaption
+            class="sc-fzXfLP QTvUN"
+          >
+            <p
+              class="sc-fzXfLU jLvlxc"
+            >
+              Price: $
+              198.99
+            </p>
+            <button
+              class="sc-AykKK sc-fzXfLQ dwZFpm"
+            >
+              <img
+                alt="Card btn"
+                class="sc-fzXfLR iMZIzX"
+                src="[object Object]"
+              />
+              <p>
+                ADD TO CART
+              </p>
+            </button>
+          </figcaption>
+        </picture>
+      </li>
+    </ul>
+  </main>
+  <button
+    class="sc-AykKK sc-fzXfNk kDDgCg"
+  >
+    Cart
+  </button>
+  <footer
+    class="sc-AykKC kFxBsn"
+  >
+    <p
+      class="sc-AykKD fXVIsY"
+    >
+      Copyright @ AKQA LTD Registered in England
+    </p>
+  </footer>
 </div>
 `;
